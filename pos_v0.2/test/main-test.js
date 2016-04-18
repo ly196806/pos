@@ -1,5 +1,6 @@
 describe('pos', function() {
   var allItems;
+  
   var inputs;
 
   beforeEach(function() {

@@ -1,0 +1,17 @@
+function printReceipt(inputs) {
+  var str_stu_receipt="***<没钱赚商店>收据***"+"\n";
+  str_stu_receipt+=receiptitem(inputs);
+  console.log(str_stu_receipt);
+}
+function cartitem(inputs){
+  var str_stu_items="名称："+inputs[0].name+"，"+"数量："+inputs[0].count+"瓶，"+"单价："+(inputs[0].price).toFixed(2)+"(元)，"+"小计："+(inputs[0].count*inputs[0].price).toFixed(2)
+    +"(元)"+"\n"+"名称："+inputs[1].name+"，"+"数量："+inputs[1].count+"瓶，"+"单价："+(inputs[1].price).toFixed(2)+"(元)，"+"小计："+(inputs[1].count*inputs[1].price).toFixed(2)
+    +"(元)"+"\n"+"名称："+inputs[2].name+"，"+"数量："+inputs[2].count+"个，"+"单价："+(inputs[2].price).toFixed(2)+"(元)，"+"小计："+(inputs[2].count*inputs[2].price).toFixed(2)
+    +"(元)"+"\n";
+  return str_stu_items;
+}
+function receiptitem(inputs){
+  var str_stu_cart=cartitem(inputs)+"----------------------\n"+"总计："+(inputs[0].count*inputs[0].price+inputs[1].count*inputs[1].price+inputs[2].count*inputs[2].price).toFixed(2)
+  +"(元)\n"+"**********************";
+  return str_stu_cart;
+}
