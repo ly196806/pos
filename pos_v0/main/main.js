@@ -1,34 +1,45 @@
-//TODO: Please write code in this file.
 function printReceipt(items) {
-  var cartitems=buildsubtotal(items);
-  var receipttotal=builtotal(cartitems);
-  str=toreceipt(receipttotal);
+  var cartItems=buildSubtotal(items);
+  
+  var receiptTotal=buildTotal(cartItems);
+  
+  str=toReceipt(receiptTotal);
   console.log(str);
 }
 
-function buildsubtotal(items) {
-  var cartitems = [];
+function buildSubtotal(items) {
+  var cartItems = [];
+  
   for (var i=0;i<items.length;i++){
+    
     var subtotal = items[i].price * items[i].count;
-    cartitems.push({item: items[i], subtotal:subtotal});
+    
+    cartItems.push({item: items[i], subtotal:subtotal});
   }
-  return cartitems;
+  
+  return cartItems;
 }
-function builtotal(cartitems) {
+
+function buildTotal(cartItems) {
+  
   var total=0;
-  for(var i=0;i<cartitems.length;i++){
+  
+  for(var i=0;i<cartItems.length;i++){
 
-    total+=cartitems[i].subtotal;
+    total+=cartItems[i].subtotal;
   }
-  return {items:cartitems,total:total};
+  
+  return {items:cartItems,total:total};
+  
 }
-function toreceipt(receipttotal){
+
+function toReceipt(receiptTotal){
   var str='***<没钱赚商店>收据***\n';
-  for(var i=0;i<receipttotal.items.length;i++){
-    str+=("名称："+receipttotal.items[i].item.name+"，数量："+receipttotal.items[i].item.count+receipttotal.items[i].item.unit+"，单价："+receipttotal.items[i].item.price.toFixed(2)+"(元)"
-    +"，小计："+receipttotal.items[i].subtotal.toFixed(2)+"(元)\n");
+  for(var i=0;i<receiptTotal.items.length;i++){
+    str+=("名称："+receiptTotal.items[i].item.name+"，数量："+receiptTotal.items[i].item.count+receiptTotal.items[i].item.unit+"，单价："+receiptTotal.items[i].item.price.toFixed(2)+"(元)"
+    +"，小计："+receiptTotal.items[i].subtotal.toFixed(2)+"(元)\n");
 
   }
-  str+="----------------------"+"\n总计："+(receipttotal.total).toFixed(2)+"(元)\n"+"**********************";
+  str+="----------------------"+"\n总计："+(receiptTotal.total).toFixed(2)+"(元)\n"+"**********************";
   return str;
 }

@@ -1,6 +1,6 @@
 describe('pos', function() {
   describe('unit testing', function () {
-    describe('test buildsubtotal function', function () {
+    describe('test buildSubtotal function', function () {
       var items;
       beforeEach(function () {
         items = [
@@ -28,7 +28,7 @@ describe('pos', function() {
         ];
       });
       it('return correct cartitems', function () {
-        var cartitems = [
+        var cartItems = [
           {
             item: {
               barcode: 'ITEM000000',
@@ -60,13 +60,13 @@ describe('pos', function() {
             subtotal: 2.00
           }
         ];
-        expect(buildsubtotal(items)).toEqual(cartitems);
+        expect(buildSubtotal(items)).toEqual(cartItems);
       });
     });
-    describe('test buildtotal function', function () {
-      var cartitems;
+    describe('test buildTotal function', function () {
+      var cartItems;
       beforeEach(function () {
-        cartitems = [
+        cartItems = [
           {
             item: {
               barcode: 'ITEM000000',
@@ -100,7 +100,7 @@ describe('pos', function() {
         ];
       });
       it('return correct receipttotal', function () {
-        var receipttotal = {
+        var receiptTotal = {
           items: [
             {
               item: {
@@ -135,7 +135,7 @@ describe('pos', function() {
           ],
           total: 23.00
         };
-        expect(builtotal(cartitems)).toEqual(receipttotal);
+        expect(buildTotal(cartItems)).toEqual(receiptTotal);
       });
     });
   });

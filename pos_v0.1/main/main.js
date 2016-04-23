@@ -1,52 +1,79 @@
 function printReceipt(inputs) {
-  var cartitems=buildcount(inputs);
-  var receiptitems=buildsubtotal(cartitems);
-  var receipt=buildtotal(receiptitems);
-  var str=toreceipt(receipt);
+  var cartItems=buildCount(inputs);
+  
+  var receiptItems=buildSubtotal(cartItems);
+  
+  var receipt=buildTotal(receiptItems);
+  
+  var str=toReceipt(receipt);
   console.log(str);
 }
-function buildcount(inputs) {
-  var cartitems=[];
-  cartitems[0]={item:inputs[0],count:1};
+
+function buildCount(inputs) {
+  var cartItems=[];
+  
+  cartItems[0]={item:inputs[0],count:1};
   var j=0;
   for(var i=1;i<inputs.length;i++) {
-    if(inputs[i].barcode===cartitems[j].item.barcode){
-      cartitems[j].count++;
+    if(inputs[i].barcode===cartItems[j].item.barcode){
+      cartItems[j].count++;
     }
     else{
-      cartitems.push({item:inputs[i],count:1})
+      cartItems.push({item:inputs[i],count:1})
       j++;
     }
   }
-  return cartitems;
+  
+  return cartItems;
 }
-function buildsubtotal(cartitems) {
-  var receiptitems=[];
-  cartitems.forEach(function (cartitem) {
-    var subtotal=cartitem.count*cartitem.item.price;
-    receiptitems.push({cartitems:cartitem,subtotal:subtotal});
+
+function buildSubtotal(cartItems) {
+  
+  var receiptItems=[];
+  
+  cartItems.forEach(function (cartItem) {
+    
+    var subtotal=cartItem.count*cartItem.item.price;
+    
+    receiptItems.push({cartItems:cartItem,subtotal:subtotal});
   });
-  return receiptitems;
+
+  return receiptItems;
+  
 }
-function buildtotal(receiptitems) {
+
+function buildTotal(receiptItems) {
+  
   var total=0;
-  receiptitems.forEach(function (receiptitem) {
-    total+=receiptitem.subtotal;
+  
+  receiptItems.forEach(function (receiptItem) {
+    total+=receiptItem.subtotal;
   });
-  return {receiptitems:receiptitems,total:total};
+  
+  return {receiptItems:receiptItems,total:total};
+  
 }
-function generatereceiptitems(receiptitems) {
+
+function generateReceiptitems(receiptItems) {
+  
   var string="";
-  receiptitems.forEach(function (receiptitem) {
-    var cartitem=receiptitem.cartitems;
-    string+="名称："+cartitem.item.name+"，数量："+cartitem.count+cartitem.item.unit+"，单价："+cartitem.item.price.toFixed(2)
-      +"(元)，小计："+receiptitem.subtotal.toFixed(2)+"(元)\n";
+
+  receiptItems.forEach(function (receiptItem) {
+
+    var cartItems=receiptItem.cartItems;
+
+    string+="名称："+cartItems.item.name+"，数量："+cartItems.count+cartItems.item.unit+"，单价："+cartItems.item.price.toFixed(2)
+      +"(元)，小计："+receiptItem.subtotal.toFixed(2)+"(元)\n";
   });
+
   return string;
+  
 }
-function toreceipt(receipt) {
-  var str="***<没钱赚商店>收据***\n"+generatereceiptitems(receipt.receiptitems)+"----------------------\n"+"总计："+receipt.total.toFixed(2)+
+
+function toReceipt(receipt) {
+  var str="***<没钱赚商店>收据***\n"+generateReceiptitems(receipt.receiptItems)+"----------------------\n"+"总计："+receipt.total.toFixed(2)+
     "(元)\n"+"**********************" ;
+  
   return str;
 
 }

@@ -1,6 +1,6 @@
 describe('pos', function() {
   describe('unit testing', function () {
-    describe('test buildcount function', function () {
+    describe('test buildCount function', function () {
       var inputs;
       beforeEach(function () {
         inputs = [
@@ -56,7 +56,7 @@ describe('pos', function() {
         ];
       });
       it('return correct cartitems', function () {
-        var cartitems = [
+        var cartItems = [
           {
             item: {
               barcode: 'ITEM000000',
@@ -85,13 +85,13 @@ describe('pos', function() {
             count: 1
           }
         ];
-        expect(buildcount(inputs)).toEqual(cartitems);
+        expect(buildCount(inputs)).toEqual(cartItems);
       });
     });
-    describe('test buildsubtotal function', function () {
-      var cartitems;
+    describe('test buildSubtotal function', function () {
+      var cartItems;
       beforeEach(function () {
-        cartitems = [
+        cartItems = [
           {
             item: {
               barcode: 'ITEM000000',
@@ -121,10 +121,10 @@ describe('pos', function() {
           }
         ];
       });
-      it('return correct receiptitems', function () {
-        var receiptitems = [
+      it('return correct receiptItems', function () {
+        var receiptItems = [
           {
-            cartitems: {
+            cartItems: {
               item: {
                 barcode: 'ITEM000000',
                 name: '可口可乐',
@@ -136,7 +136,7 @@ describe('pos', function() {
             subtotal: 15.00
           },
           {
-            cartitems: {
+            cartItems: {
               item: {
                 barcode: 'ITEM000001',
                 name: '雪碧',
@@ -148,7 +148,7 @@ describe('pos', function() {
             subtotal: 6.00
           },
           {
-            cartitems: {
+            cartItems: {
               item: {
                 barcode: 'ITEM000004',
                 name: '电池',
@@ -160,15 +160,15 @@ describe('pos', function() {
             subtotal: 2.00
           }
         ];
-        expect(buildsubtotal(cartitems)).toEqual(receiptitems);
+        expect(buildSubtotal(cartItems)).toEqual(receiptItems);
       });
     });
-    describe('test buildtotal function', function () {
-      var receiptitems;
+    describe('test buildTotal function', function () {
+      var receiptItems;
       beforeEach(function () {
-        receiptitems = [
+        receiptItems = [
           {
-            cartitems: {
+            cartItems: {
               item: {
                 barcode: 'ITEM000000',
                 name: '可口可乐',
@@ -180,7 +180,7 @@ describe('pos', function() {
             subtotal: 15.00
           },
           {
-            cartitems: {
+            cartItems: {
               item: {
                 barcode: 'ITEM000001',
                 name: '雪碧',
@@ -192,7 +192,7 @@ describe('pos', function() {
             subtotal: 6.00
           },
           {
-            cartitems: {
+            cartItems: {
               item: {
                 barcode: 'ITEM000004',
                 name: '电池',
@@ -207,9 +207,9 @@ describe('pos', function() {
       });
       it('return correct receipt', function () {
         var receipt = {
-          receiptitems: [
+          receiptItems: [
             {
-              cartitems: {
+              cartItems: {
                 item: {
                   barcode: 'ITEM000000',
                   name: '可口可乐',
@@ -221,7 +221,7 @@ describe('pos', function() {
               subtotal: 15.00
             },
             {
-              cartitems: {
+              cartItems: {
                 item: {
                   barcode: 'ITEM000001',
                   name: '雪碧',
@@ -233,7 +233,7 @@ describe('pos', function() {
               subtotal: 6.00
             },
             {
-              cartitems: {
+              cartItems: {
                 item: {
                   barcode: 'ITEM000004',
                   name: '电池',
@@ -247,7 +247,7 @@ describe('pos', function() {
           ],
           total: 23.00
         };
-        expect(buildtotal(receiptitems)).toEqual(receipt);
+        expect(buildTotal(receiptItems)).toEqual(receipt);
       });
     });
 

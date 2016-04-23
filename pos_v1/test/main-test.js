@@ -59,7 +59,7 @@ describe('pos', function() {
       });
     });
 
-    describe('test buildsubtotal function', function () {
+    describe('test buildSubtotal function', function () {
       var cartItems;
 
       beforeEach(function () {
@@ -97,7 +97,7 @@ describe('pos', function() {
       it('Return correct receiptItems', function () {
         var receiptItems = [
           {
-            cartitem: {
+            cartItem: {
               item: {
                 barcode: 'ITEM000001',
                 name: '雪碧',
@@ -110,7 +110,7 @@ describe('pos', function() {
             saved: 3.00
           },
           {
-            cartitem: {
+            cartItem: {
               item: {
                 barcode: 'ITEM000003',
                 name: '荔枝',
@@ -123,7 +123,7 @@ describe('pos', function() {
             saved: 0.00
           },
           {
-            cartitem: {
+            cartItem: {
               item: {
                 barcode: 'ITEM000005',
                 name: '方便面',
@@ -136,17 +136,17 @@ describe('pos', function() {
             saved: 4.50
           }
         ];
-        expect(buildsubtotal(cartItems, promotions)).toEqual(receiptItems);
+        expect(buildSubtotal(cartItems, promotions)).toEqual(receiptItems);
       });
     });
 
-    describe('test buildtotal function', function () {
+    describe('test buildTotal function', function () {
       var receiptItems;
 
       beforeEach(function () {
         receiptItems = [
           {
-            cartitem: {
+            cartItem: {
               item: {
                 barcode: 'ITEM000001',
                 name: '雪碧',
@@ -159,7 +159,7 @@ describe('pos', function() {
             saved: 3.00
           },
           {
-            cartitem: {
+            cartItem: {
               item: {
                 barcode: 'ITEM000003',
                 name: '荔枝',
@@ -172,7 +172,7 @@ describe('pos', function() {
             saved: 0.00
           },
           {
-            cartitem: {
+            cartItem: {
               item: {
                 barcode: 'ITEM000005',
                 name: '方便面',
@@ -191,7 +191,7 @@ describe('pos', function() {
         var receipt = {
           receiptItem: [
             {
-              cartitem: {
+              cartItem: {
                 item: {
                   barcode: 'ITEM000001',
                   name: '雪碧',
@@ -204,7 +204,7 @@ describe('pos', function() {
               saved: 3.00
             },
             {
-              cartitem: {
+              cartItem: {
                 item: {
                   barcode: 'ITEM000003',
                   name: '荔枝',
@@ -217,7 +217,7 @@ describe('pos', function() {
               saved: 0.00
             },
             {
-              cartitem: {
+              cartItem: {
                 item: {
                   barcode: 'ITEM000005',
                   name: '方便面',
@@ -233,7 +233,7 @@ describe('pos', function() {
           total: 51.00,
           saved: 7.50
         }
-        expect(buildtotal(receiptItems)).toEqual(receipt);
+        expect(buildTotal(receiptItems)).toEqual(receipt);
       });
 
     });
